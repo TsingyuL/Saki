@@ -1,4 +1,4 @@
-# Saki
+# Love Page
 
 一个静态网页小互动。
 
@@ -9,5 +9,5 @@
 
 例如：
 
-`https://<你的用户名>.github.io/Saki/?name=Saki`
+`https://<你的用户名>.github.io/<仓库名>/?name=你的名字`
 

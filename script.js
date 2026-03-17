@@ -9,11 +9,12 @@ let username = params.get("name");
 // 限制用户名长度，避免页面样式崩坏
 const maxLength = 20;
 const safeUsername =
-  username && username.trim()
-    ? username.trim().substring(0, maxLength)
-    : "Saki";
+  username && username.trim() ? username.trim().substring(0, maxLength) : "";
 
-questionText.innerText = questionText.innerText + safeUsername;
+// 只有传了 ?name= 才展示名字，避免默认名字“多出来”
+if (safeUsername) {
+  questionText.innerText = `${questionText.innerText}${safeUsername}`;
+}
 
 let clickCount = 0; // 记录点击 No 的次数
 
@@ -57,9 +58,9 @@ noButton.addEventListener("click", function () {
 });
 
 // Yes 按钮点击后，进入表白成功页面
-const loveTest = `!!!喜欢你!! ( >᎑<)♡︎ᐝ  ${
-  `${safeUsername}  ♡︎ᐝ(>᎑< )`
-}`;
+const loveTest = safeUsername
+  ? `!!!喜欢你!! ( >᎑<)♡︎ᐝ  ${safeUsername}  ♡︎ᐝ(>᎑< )`
+  : `!!!喜欢你!! ( >᎑<)♡︎ᐝ`;
 
 yesButton.addEventListener("click", function () {
   // 先创建基础 HTML 结构
