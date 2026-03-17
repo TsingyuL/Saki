@@ -8,12 +8,12 @@ let username = params.get("name");
 
 // 限制用户名长度，避免页面样式崩坏
 const maxLength = 20;
-const safeUsername = username ? username.substring(0, maxLength) : "???";
+const safeUsername =
+  username && username.trim()
+    ? username.trim().substring(0, maxLength)
+    : "Saki";
 
-// 防止 `null` 变成 `"null"`
-if (username) {
-  questionText.innerText = questionText.innerText + safeUsername;
-}
+questionText.innerText = questionText.innerText + safeUsername;
 
 let clickCount = 0; // 记录点击 No 的次数
 
@@ -58,7 +58,7 @@ noButton.addEventListener("click", function () {
 
 // Yes 按钮点击后，进入表白成功页面
 const loveTest = `!!!喜欢你!! ( >᎑<)♡︎ᐝ  ${
-  username ? `${safeUsername}  ♡︎ᐝ(>᎑< )` : ""
+  `${safeUsername}  ♡︎ᐝ(>᎑< )`
 }`;
 
 yesButton.addEventListener("click", function () {
